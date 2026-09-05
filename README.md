@@ -4,7 +4,7 @@
 
 Checkrally is a turn-based tennis puzzle game about creating a court position your opponent can no longer defend.
 
-This repository contains the Godot 4.7 prototype. The current branch target is **v0.8 Core Puzzle Rebuild**, designed as a compact grant-demo slice for the Draknek New Voices Puzzle Grant 2026.
+This repository contains the Godot 4.7 prototype. The current branch target is **v0.8.1 Core Puzzle Rebuild + Grant UI Hotfix**, designed as a compact grant-demo slice for the Draknek New Voices Puzzle Grant 2026.
 
 ## Core idea
 
@@ -34,6 +34,16 @@ The first ten puzzles teach:
 8. Pressure + deep angle
 9. Reading a pre-existing Weak Zone
 10. Open Checkrally exam
+
+## v0.8.1 Grant UI hotfix
+
+- Godot 4.7 is now the project baseline.
+- Puzzle title/state stay inside the left column instead of colliding with the rules panel.
+- Opponent court is shifted into a clean visual block below the puzzle header.
+- Reach cells receive a small readability lift while preserving Main.gd's semantic colors.
+- Shot, navigation, and puzzle-select controls are reflowed for the 1100 x 720 grant-demo window.
+- Right-side information is spaced into a clearer hierarchy: Reach -> instruction -> hint -> lesson -> rally log.
+- A small `Godot 4.7 • Grant Demo v0.8.1` build badge is shown in the UI.
 
 See `docs/CORE_DESIGN_V0.8.md` for the design thesis and deferred systems.
 
