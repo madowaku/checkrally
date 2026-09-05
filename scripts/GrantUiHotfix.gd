@@ -61,6 +61,7 @@ func _apply_hotfix() -> void:
 			if panel.size.x > 500.0 and panel.size.y > 200.0:
 				panel.position = Vector2(468, 214)
 				panel.size = Vector2(566, 260)
+				_reflow_result_panel(panel)
 
 	_add_version_badge(root)
 
@@ -107,6 +108,21 @@ func _reflow_stage_buttons(root: Control) -> void:
 	for i in range(candidates.size()):
 		candidates[i].position = Vector2(44 + i * 39, 644)
 		candidates[i].size = Vector2(34, 32)
+
+func _reflow_result_panel(panel: Panel) -> void:
+	for child in panel.get_children():
+		if child is Label:
+			var label: Label = child as Label
+			label.position = Vector2(24, 22)
+			label.size = Vector2(518, 148)
+		elif child is Button:
+			var button: Button = child as Button
+			if button.text == "Retry":
+				button.position = Vector2(54, 188)
+				button.size = Vector2(170, 46)
+			elif button.text.begins_with("Next Puzzle"):
+				button.position = Vector2(342, 188)
+				button.size = Vector2(170, 46)
 
 func _move_label(root: Control, exact_text: String, pos: Vector2, new_size: Vector2, font_size: int) -> void:
 	for child in root.get_children():
