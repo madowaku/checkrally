@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Pull, Then Pass",
+    "max_shots": 2,
+    "opponent": {"x": 2, "y": 1, "stance": "Neutral", "pressure": 0},
+    "available_shots": ["Drop", "Lob"],
+    "hint": "A drop shot can pull a balanced defender forward. What becomes weak next?",
+    "lesson": "Drop changes the defender to Forward. Forward reach is weak behind them.",
+    "solution": "Drop -> Lob"
+  },
+  {
+    "id": 2,
+    "name": "Back, Then Short",
+    "max_shots": 2,
+    "opponent": {"x": 2, "y": 1, "stance": "Neutral", "pressure": 0},
+    "available_shots": ["Lob", "Drop"],
+    "hint": "Move them deep first, then look at the front of the court.",
+    "lesson": "Lob creates Back stance. Back reach is weak near the net.",
+    "solution": "Lob -> Drop"
+  },
+  {
+    "id": 3,
+    "name": "Change Direction",
+    "max_shots": 2,
+    "opponent": {"x": 2, "y": 1, "stance": "Neutral", "pressure": 0},
+    "available_shots": ["Cross"],
+    "hint": "Stretch them to one side. The same idea can attack the space they just abandoned.",
+    "lesson": "Cross creates a stretched stance and opens the opposite side.",
+    "solution": "Cross -> Cross"
+  },
+  {
+    "id": 4,
+    "name": "Heavy Ball",
+    "max_shots": 2,
+    "opponent": {"x": 2, "y": 1, "stance": "Neutral", "pressure": 0},
+    "available_shots": ["Drive", "Drop"],
+    "hint": "A hard drive may not score, but it can shrink the next Reach.",
+    "lesson": "Drive applies Pressure. A pressured defender loses diagonal coverage for one shot.",
+    "solution": "Drive -> angled Drop"
+  },
+  {
+    "id": 5,
+    "name": "Too Far Forward",
+    "max_shots": 1,
+    "opponent": {"x": 2, "y": 2, "stance": "Forward", "pressure": 0},
+    "available_shots": ["Lob"],
+    "hint": "Do not move them first. Read what they cannot cover now.",
+    "lesson": "Forward stance leaves the back row outside Reach.",
+    "solution": "Lob"
+  },
+  {
+    "id": 6,
+    "name": "Pinned Deep",
+    "max_shots": 1,
+    "opponent": {"x": 2, "y": 0, "stance": "Back", "pressure": 0},
+    "available_shots": ["Drop"],
+    "hint": "The defender is already deep. Punish the space in front.",
+    "lesson": "Back stance leaves the front row outside Reach.",
+    "solution": "Drop"
+  },
+  {
+    "id": 7,
+    "name": "Wrong-Footed",
+    "max_shots": 1,
+    "opponent": {"x": 3, "y": 1, "stance": "StretchedRight", "pressure": 0},
+    "available_shots": ["Cross"],
+    "hint": "Their weight is already committed to the right side.",
+    "lesson": "A stretched defender cannot reverse direction across the court in one response.",
+    "solution": "Cross"
+  },
+  {
+    "id": 8,
+    "name": "Open The Diagonal",
+    "max_shots": 2,
+    "opponent": {"x": 2, "y": 1, "stance": "Neutral", "pressure": 0},
+    "available_shots": ["Drive", "Lob"],
+    "hint": "First reduce the defender's reach, then use an angled landing square.",
+    "lesson": "Pressure turns diagonal cells into Weak Zones.",
+    "solution": "Drive -> angled Lob"
+  },
+  {
+    "id": 9,
+    "name": "One Weak Beat",
+    "max_shots": 1,
+    "opponent": {"x": 2, "y": 1, "stance": "Neutral", "pressure": 1},
+    "available_shots": ["Drop", "Lob"],
+    "hint": "The defender is already pressured. Find a legal landing square outside the smaller Reach.",
+    "lesson": "Weak Zones are not special tiles. They are simply legal targets outside current Reach.",
+    "solution": "angled Drop or angled Lob"
+  },
+  {
+    "id": 10,
+    "name": "Checkrally Exam",
+    "max_shots": 2,
+    "opponent": {"x": 2, "y": 1, "stance": "Neutral", "pressure": 0},
+    "available_shots": ["Drop", "Lob", "Cross", "Drive"],
+    "hint": "Read Reach first. Create a weakness before trying to score.",
+    "lesson": "Every shot is a way to reshape the next reachable space.",
+    "solution": "Find any forcing two-shot line"
+  }
+]
