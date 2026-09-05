@@ -4,7 +4,7 @@
 
 Checkrally is a turn-based tennis puzzle game about creating a court position your opponent can no longer defend.
 
-This repository contains the Godot 4.6 prototype. The current branch target is **v0.8 Core Puzzle Rebuild**, designed as a compact grant-demo slice for the Draknek New Voices Puzzle Grant 2026.
+This repository contains the Godot 4.7 prototype. The current branch target is **v0.8 Core Puzzle Rebuild**, designed as a compact grant-demo slice for the Draknek New Voices Puzzle Grant 2026.
 
 ## Core idea
 
@@ -39,7 +39,7 @@ See `docs/CORE_DESIGN_V0.8.md` for the design thesis and deferred systems.
 
 ## Run
 
-1. Install Godot 4.6.
+1. Install Godot 4.7.
 2. Import this repository using `project.godot`.
 3. Run the project. `scenes/Main.tscn` is the main scene.
 
