@@ -1,0 +1,14 @@
+# Godot 4+
+.godot/
+/export/
+*.tmp
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local test artifacts
+reports/
+screenshots/
