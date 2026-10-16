@@ -26,7 +26,8 @@ func _apply_hotfix() -> void:
 	for child in root.get_children():
 		if child is Button:
 			var button: Button = child as Button
-			if button.text == "" and button.position.x >= 40.0 and button.position.x <= 420.0 and button.position.y >= 165.0 and button.position.y <= 330.0:
+			# Select the court by its original geometry, not its label: the opponent cell displays "O".
+			if button.position.x >= 40.0 and button.position.x <= 420.0 and button.position.y >= 165.0 and button.position.y <= 330.0:
 				button.position.y += COURT_SHIFT_Y
 				# Main.gd owns the semantic cell colors. This only lifts their readability.
 				button.self_modulate = Color(1.30, 1.30, 1.30, 1.0)
