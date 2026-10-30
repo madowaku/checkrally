@@ -1,0 +1,74 @@
+name: Checkrally Godot 4.7 verification
+
+on:
+  push:
+    branches:
+      - factory/checkrally-godot-qa-20261031
+  pull_request:
+    paths:
+      - '.github/workflows/checkrally-godot.yml'
+      - 'project.godot'
+      - 'scenes/**'
+      - 'scripts/**'
+      - 'data/**'
+      - 'tools/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  godot-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          use-dotnet: false
+      - name: Confirm Godot version
+        run: godot --version
+      - name: Validate ten-stage demo data
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          stages = json.loads(Path("data/stages.json").read_text(encoding="utf-8"))
+          assert isinstance(stages, list) and len(stages) == 10, "Expected exactly ten demo stages"
+          assert [s["id"] for s in stages] == list(range(1, 11)), "Stage IDs must be 1..10"
+          for stage in stages:
+              assert stage["max_shots"] >= 1 and stage["available_shots"], stage["id"]
+              assert all(shot in ("Drop", "Lob", "Cross", "Drive") for shot in stage["available_shots"]), stage["id"]
+              opponent = stage["opponent"]
+              assert 0 <= opponent["x"] < 5 and 0 <= opponent["y"] < 3, stage["id"]
+          print("PASS: ten ordered stages with valid shot and court bounds")
+          PY
+      - name: Import Godot project
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p qa-logs
+          touch qa-logs/.gdignore
+          timeout 180s godot --headless --path . --import 2>&1 | tee qa-logs/import.log
+          ! grep -Eq 'SCRIPT ERROR:|^ERROR:' qa-logs/import.log
+      - name: Test all 15 court cells including opponent
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 90s godot --headless --path . --script res://tools/test_grant_ui_hotfix.gd 2>&1 | tee qa-logs/court.log
+          grep -q 'PASS: all 15 court cells, including opponent, shifted 24px' qa-logs/court.log
+          ! grep -Eq 'SCRIPT ERROR:|^ERROR:' qa-logs/court.log
+      - name: Boot actual main scene (headless)
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 60s godot --headless --path . --quit-after 5 2>&1 | tee qa-logs/startup.log
+          ! grep -Eq 'SCRIPT ERROR:|^ERROR:' qa-logs/startup.log
+      - name: Preserve diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkrally-godot-qa-logs
+          path: qa-logs/*.log
+          if-no-files-found: ignore
